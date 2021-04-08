@@ -1,0 +1,104 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% load cloudinary %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="feed">
+
+        <div class="post">
+            <div class="post__top">
+                {% if post.author.profile.photo %}
+                <img src="{{ post.author.profile.photo.url }}" alt="" class="post__avatar">
+                {% else %}
+                <img src="/media/default.jpg" alt="" class="post__avatar">
+                {% endif %}
+                <!-- <i class="far fa-user-circle" class="post__avatar"></i> -->
+                <div class="post__topInfo">
+                    <h5> {{post.author}} </h5>
+                    <p>{{ post.whenpublished }}</p>
+                </div>
+                {% if post.author == request.user %}
+                <div class="post__buttons">
+                    <div class="post__topInfoBtn">
+                        <a href="{% url 'post_edit' id=post.id %}">
+                            <Button type="submit" name="button" class="btn btn-outline-secondary">Edit</Button>
+                        </a>
+                    </div>
+                    <div class="post__topInfoBtns">
+                        <a href="{% url 'post_delete' id=post.id %}" id="delete">
+                            <Button type="submit" name="button" class="btn btn-outline-secondary">Delete</Button>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="post__bottom">
+                <p> {{post.body}} </p>
+            </div>
+            <div class="post__image">
+                {% for post in post.images_set.all %}
+                <img src="{{ post.image.url }}" alt="no image">
+                {% endfor %}
+            </div>
+
+            <!-- <div id="like-sections" class="post__options">
+                <div id="like-section" class="post__option">
+                    <button name="post_id" id="like" value="{{ post.id }}" class="post__option">
+                        <i class="fas fa-thumbs-up"></i>
+                        <p>{{ total_likes }} Like{{ total_likes|pluralize }}</p>
+                    </button>
+                </div>
+            </div> -->
+
+            <div class="pst__options">
+                <div class="p__option" id="like-sections">
+                    <span class="span"><i class="fas fa-thumbs-up"></i></span>
+                    <p> {{ post.total_likes }}</p>
+                </div>
+                <div class="p__option">
+                    <p class="p">{{ comments.count }} Comment{{ comments|pluralize }}</p>
+                </div>
+            </div>
+
+            <div class="post__options">
+
+                <div id="like-section" class="post__option">
+                    {% include 'app/like_section.html' %}
+                </div>
+                
+                <div class="post__option">
+                    <i class="far fa-comment-alt"></i>
+                    <p>Comment</p>
+                </div>
+                <div class="post__option">
+                    <i class="fas fa-share"></i>
+                    <p>Share</p>
+                </div>
+                <div class="post__option">
+                    <i class="far fa-user-circle"></i>
+                    <p><i class="fas fa-sort-down"></i></p>
+                </div>
+            </div>
+
+            <hr>
+            {% if not post.restrict_comment %}
+            <div class="container-fluid ml-3">
+                {% include 'app/comments.html' %}
+            </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+</body>
+
+</html>

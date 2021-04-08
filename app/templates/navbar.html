@@ -1,0 +1,166 @@
+{% load static %}
+
+<div class="header">
+    <div class="header__left">
+       <a href="{% url 'index' %}"><span><i class="fab fa-facebook-f"></i></span></a>
+        <form class="header__input" action="{% url 'index' %}">
+            <i class="fas fa-search"></i>
+            <input type="search" placeholder="Search Facebook" name="q" />
+        </form>
+    </div>
+    <div class="header__center">
+        <div class="header__option--active">
+            <i class="fas fa-home"></i>
+        </div>
+        <div class="header__option">
+            <i class="fab fa-youtube"></i>
+        </div>
+        <div class="header__option">
+            <i class="fab fa-font-awesome-flag"></i>
+        </div>
+        <div class="header__option">
+            <i class="fas fa-store"></i>
+        </div>
+        <div class="header__option">
+            <i class="fas fa-users"></i>
+        </div>
+    </div>
+    <div class="header__right">
+        <div id="hr" class="header__info">
+            <a href="">
+                {% if request.user.profile.photo %}
+                <img src="{{ request.user.profile.photo.url }}" alt="" class="nav-img">
+                {% else %}
+                <img src="/media/default.jpg" alt="" class="nav-img">
+                {% endif %}
+            <!-- <i class="far fa-user-circle"></i> -->
+            </a>
+            <h6>{{request.user}}</h6>
+            
+        </div>
+
+        <span class="dropdown">
+            <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-plus"></i>
+            </button>
+            <div id="one" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'post_create' %}">
+                    <div class="dropdownRow">
+                        <span id="span"><i class="fas fa-edit"></i></span>
+                        <div class="dropdownRow__text">
+                            <h6>Post</h6>
+                            <p>Share a post on News Feed</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="dropdown-item" href="#">
+                    <div class="dropdownRow">
+                        <span id="span"><i class="fas fa-book-open"></i></span>
+                        <div class="dropdownRow__text">
+                            <h6>Story</h6>
+                        </div>
+                    </div>
+                </a>
+                <a class="dropdown-item" href="#">
+                    <div class="dropdownRow">
+                        <span id="span"><i class="fas fa-video"></i></span>
+                        <div class="dropdownRow__text">
+                            <h6>Room</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </span>
+
+        <span class="dropdown">
+            <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <i class="fab fa-facebook-messenger"></i>
+            </button>
+            <div id="two" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </span>
+
+        <span class="dropdown">
+            <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <i class="fas fa-bell"></i>
+            </button>
+            <div id="three" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </span>
+
+        <span class="dropdown">
+            <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <i class="fas fa-sort-down"></i>
+            </button>
+            <div id="four" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'edit_profile' %}">
+                    <div class="dropdownRow">
+                        {% if request.user.profile.photo %}
+                        <img src="{{ request.user.profile.photo.url }}" alt="" class="dropdownRow__img">
+                        {% else %}
+                        <img src="/media/default.jpg" alt="" class="dropdownRow__img">
+                        {% endif %}
+                        
+                        <div class="dropdownRow__text">
+                            <h6>{{request.user}}</h6>
+                            <p>See your profile</p>
+                        </div>
+                    </div>
+                </a>
+                <hr>
+                <a class="dropdown-item" href="#">
+                    <div class="dropdownRow">
+                        <span id="span"><i class="far fa-comment-alt"></i></span>
+                        <div class="dropdownRow__text">
+                            <h6>Give feedback</h6>
+                            <p>Help us improve the new Facebook</p>
+                        </div>
+                    </div>
+                </a>
+                <hr>
+                <a class="dropdown-item" href="#">
+                    <div class="dropdownRow">
+                        <span id="span"><i class="fas fa-cog"></i></span>
+                        <div class="dropdownRow__text">
+                            <h6>Settings &#38; privacy</h6>
+                        </div>
+                    </div>
+                </a>
+                <a class="dropdown-item" href="#">
+                    <div class="dropdownRow">
+                       <span id="span"><i class="far fa-question-circle"></i></span> 
+                        <div class="dropdownRow__text">
+                            <h6>Help &#38; support</h6>
+                        </div>
+                    </div>
+                </a>
+                <a class="dropdown-item" href="#">
+                    <div class="dropdownRow">
+                        <span id="span"><i class="fas fa-moon"></i></span>
+                        <div class="dropdownRow__text">
+                            <h6>Display &#38; accessibility</h6>
+                        </div>
+                    </div>
+                </a>
+                <a class="dropdown-item" href="{% url 'user_logout' %}">
+                    <div class="dropdownRow">
+                        <span id="span"><i class="fas fa-sign-out-alt"></i></span>
+                        <div class="dropdownRow__text">
+                            <h6>Log Out</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </span>
+    </div>
+</div>

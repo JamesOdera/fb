@@ -1,0 +1,62 @@
+.app__body {
+  display: flex;
+}
+.app__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar {
+  position: fixed;
+  height: fit-content;
+  padding: 25px 10px;
+  flex: 0.2;
+}
+
+.sidebarRow {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebarRow:hover {
+  background-color: #3a3b3c;
+  border-radius: 10px;
+}
+
+.sidebarRow h6 {
+  margin-left: 20px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.sidebarRow i {
+  font-size: x-large;
+  color: #2e81f4;
+}
+
+.sidebarRow span .fa-users {
+  color: whitesmoke;
+}
+
+.sidebarRow .span {
+  background-color: #2e81f4;
+}
+
+.sidebarRow span {
+  background-color: rgb(19, 19, 19);
+  border-radius: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 35px;
+  width: 35px;
+  margin-left: -5px;
+}
+
+.sidebarRow span i {
+  font-size: large;
+}

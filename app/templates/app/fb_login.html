@@ -1,0 +1,37 @@
+{%extends 'app/base.html'%}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    {% block content %}
+    {{block.super}}
+        <div class="login">
+            <div class="login__logo">
+                <img src='/static/images/fblogo.png' alt="" />
+            </div>
+            <h1>Sign in With</h1>
+            
+
+            <a href="{% url 'user_login' %}">
+                <Button type="submit" name="button" class="btn btn-outline-success">Login</Button>
+            </a>
+
+            <p>-- OR --</p>
+
+            <a href="{% url 'register' %}">
+                <Button type="submit" name="button" class="btn btn-outline-secondary">Register</Button>
+            </a>
+        </div>
+    {% endblock %}
+
+</body>
+
+</html>

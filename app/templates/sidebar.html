@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebarRow">
+            {% if request.user.profile.photo %}
+            <img src="{{ request.user.profile.photo.url }}" alt="" class="nav-img">
+            {% else %}
+            <img src="/media/default.jpg" alt="" class="nav-img">
+            {% endif %}
+            <!-- <i class="far fa-user-circle"></i> -->
+            <h6>{{request.user}}</h6>
+        </div>
+        <div class="sidebarRow">
+            <i class="fab fa-font-awesome-flag"></i>
+            <h6>Pages</h6>
+        </div>
+        <div class="sidebarRow">
+            <i class="fas fa-stethoscope"></i>
+            <h6>Covid-19 Info Center</h6>
+        </div>
+        <div class="sidebarRow">
+            <i class="fas fa-user-friends"></i>
+            <h6>Friends</h6>
+        </div>
+        <div class="sidebarRow">
+            <span class="span"><i class="fas fa-users"></i></span>
+            <h6>Groups</h6>
+        </div>
+        <div class="sidebarRow">
+            <i class="fas fa-store"></i>
+            <h6>MarketPlace</h6>
+        </div>
+        <div class="sidebarRow">
+            <i class="fab fa-youtube"></i>
+            <h6>Watch</h6>
+        </div>
+        <div class="sidebarRow">
+            <span><i class="fas fa-angle-down"></i></span>
+            <h6>See More</h6>
+        </div>
+    </div>
+</body>
+</html>

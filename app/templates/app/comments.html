@@ -1,0 +1,87 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<div class="container-fluid">
+    <form method="POST" enctype="multipart/form-data" class="comment-form" action=".">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            {{ comment_form| crispy }}
+            <div class="form-group">
+                {% if request.user.is_authenticated %}
+                <input class="btn btn-outline-success" type="submit" value="submit">
+                {% else %}
+                <input class="btn btn-outline-success" type="submit" value="submit" disabled>
+                {% endif %}
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="post">
+    {% for comment in comments %}
+    <div class="comment__cover">
+        {% if comment.user.profile.photo %}
+        <img src="{{ comment.user.profile.photo.url }}" alt="" class="post__avatar" width="50" height="50">
+        {% else %}
+        <img src="/media/default.jpg" alt="" class="post__avatar">
+        {% endif %}
+        <div class="comment">
+            <blockquote class="blockquote comment__options">
+                <footer class="blockquote-footer">by <cite title="Source Title">
+                        <small>{{ comment.user|capfirst}}</small></cite>
+                    <!-- <button type="button" name="button" class="reply-btn btn-outline-dark btn-sm ml-2">reply</button> -->
+                </footer>
+                <p class="mb-0"><small>{{ comment.content }}.</small></p>
+        
+            </blockquote>
+        
+        </div>
+    </div>
+    
+
+    <div class="comment__reply">
+        <a class="reply-btn">reply</a>
+    </div>
+
+    <div class="replied-comments container mt-2 ml-18" style="display: none;">
+
+        <div class="form-group">
+            <form method="POST" enctype="multipart/form-data" class="reply-form" action=".">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                    {{ comment_form| crispy }}
+                    <div class="form-group">
+                        {% if request.user.is_authenticated %}
+                        <input class="btn btn-outline-success" type="submit" value="submit">
+                        {% else %}
+                        <input class="btn btn-outline-success" type="submit" value="submit" disabled>
+                        {% endif %}
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <div class="reply__option">
+
+        {% for reply in comment.replies.all %}
+        <div class="comment__coverr">
+            {% if reply.user.profile.photo %}
+            <img src="{{ reply.user.profile.photo.url }}" alt="" class="rep-img">
+            {% else %}
+            <img src="/media/default.jpg" alt="" class="rep-img">
+            {% endif %}
+            <blockquote class="blockquote comment">
+                <p class="mb-0"><small>{{ reply.content }}.</small></p>
+                <footer class="blockquote-footer">by <cite title="Source Title">
+                        <small>{{reply.user|capfirst}}</small></cite>
+                </footer>
+            </blockquote>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endfor %}
+</div>

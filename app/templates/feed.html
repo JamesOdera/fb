@@ -1,0 +1,250 @@
+{% load static %}
+{% load cloudinary %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="feed">
+
+        <div class="storyReal">
+    
+            <div style="background-image: url('/static/images/gun1.jpg');"
+                class="story">
+                <img src="https://scontent.fnbo4-1.fna.fbcdn.net/v/t1.0-1/cp0/p40x40/122657611_10158549290052713_8471536878232826151_n.jpg?_nc_cat=1&amp;ccb=1-3&amp;_nc_sid=1eb0c7&amp;_nc_eui2=AeFihHEUINZUmzVUGsEfVOzhWpszheZeOqlamzOF5l46qWwDP-m0gjPai34g0bQB1Me9c4gTH5OedepaD1gSRevV&amp;_nc_ohc=DODmx4O1nAMAX_Jlu8h&amp;_nc_ht=scontent.fnbo4-1.fna&amp;tp=27&amp;oh=eb6d37eb6e4c5df67ebf1f37c6e2b70b&amp;oe=606EC26D"
+                    class="story__avatar" alt="">
+                <h4>Arsenal</h4>
+            </div>
+            <div style="background-image: url('/static/images/gun2.jpg');"
+                class="story">
+                <img src="https://scontent.fnbo4-1.fna.fbcdn.net/v/t1.0-1/cp0/p40x40/122657611_10158549290052713_8471536878232826151_n.jpg?_nc_cat=1&amp;ccb=1-3&amp;_nc_sid=1eb0c7&amp;_nc_eui2=AeFihHEUINZUmzVUGsEfVOzhWpszheZeOqlamzOF5l46qWwDP-m0gjPai34g0bQB1Me9c4gTH5OedepaD1gSRevV&amp;_nc_ohc=DODmx4O1nAMAX_Jlu8h&amp;_nc_ht=scontent.fnbo4-1.fna&amp;tp=27&amp;oh=eb6d37eb6e4c5df67ebf1f37c6e2b70b&amp;oe=606EC26D"
+                    class="story__avatar" alt="">
+                <h4>Arsenal</h4>
+            </div>
+            <div style="background-image: url('/static/images/gun3.jpg');"
+                class="story">
+                <img src="https://scontent.fnbo4-1.fna.fbcdn.net/v/t1.0-1/cp0/p40x40/122657611_10158549290052713_8471536878232826151_n.jpg?_nc_cat=1&amp;ccb=1-3&amp;_nc_sid=1eb0c7&amp;_nc_eui2=AeFihHEUINZUmzVUGsEfVOzhWpszheZeOqlamzOF5l46qWwDP-m0gjPai34g0bQB1Me9c4gTH5OedepaD1gSRevV&amp;_nc_ohc=DODmx4O1nAMAX_Jlu8h&amp;_nc_ht=scontent.fnbo4-1.fna&amp;tp=27&amp;oh=eb6d37eb6e4c5df67ebf1f37c6e2b70b&amp;oe=606EC26D"
+                    class="story__avatar" alt="">
+                <h4>Arsenal</h4>
+            </div>
+            <div style="background-image: url('/static/images/gun4.jpg');"
+                class="story">
+                <img src="https://scontent.fnbo4-1.fna.fbcdn.net/v/t1.0-1/cp0/p40x40/122657611_10158549290052713_8471536878232826151_n.jpg?_nc_cat=1&amp;ccb=1-3&amp;_nc_sid=1eb0c7&amp;_nc_eui2=AeFihHEUINZUmzVUGsEfVOzhWpszheZeOqlamzOF5l46qWwDP-m0gjPai34g0bQB1Me9c4gTH5OedepaD1gSRevV&amp;_nc_ohc=DODmx4O1nAMAX_Jlu8h&amp;_nc_ht=scontent.fnbo4-1.fna&amp;tp=27&amp;oh=eb6d37eb6e4c5df67ebf1f37c6e2b70b&amp;oe=606EC26D"
+                    class="story__avatar" alt="">
+                <h4>Arsenal</h4>
+            </div>
+            <div style="background-image: url('/static/images/gun5.jpg');"
+                class="story">
+                <img src="https://scontent.fnbo4-1.fna.fbcdn.net/v/t1.0-1/cp0/p40x40/122657611_10158549290052713_8471536878232826151_n.jpg?_nc_cat=1&amp;ccb=1-3&amp;_nc_sid=1eb0c7&amp;_nc_eui2=AeFihHEUINZUmzVUGsEfVOzhWpszheZeOqlamzOF5l46qWwDP-m0gjPai34g0bQB1Me9c4gTH5OedepaD1gSRevV&amp;_nc_ohc=DODmx4O1nAMAX_Jlu8h&amp;_nc_ht=scontent.fnbo4-1.fna&amp;tp=27&amp;oh=eb6d37eb6e4c5df67ebf1f37c6e2b70b&amp;oe=606EC26D"
+                    class="story__avatar" alt="">
+                <h4>Arsenal</h4>
+            </div>
+    
+        </div>
+
+        <div class="messageSender">
+            <div class="messageSender__top">
+                {% if request.user.profile.photo %}
+                <img src="{{ request.user.profile.photo.url }}" alt="" class="post__avatar">
+                {% else %}
+                <img src="/media/default.jpg" alt="" class="post__avatar">
+                {% endif %}
+                <!-- <i class="far fa-user-circle"></i> -->
+                <form>
+                    <input type="text" placeholder="What's on your mind {{request.user.username}}?" class="messageSender__input" />
+                    <!-- <input type="text" placeholder="image URL (Optional)" /> -->
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <hr>
+            <div class="messageSender__bottom">
+                <div class="messageSender__option">
+                    <i class="fab fa-youtube" style=" color: red "></i>
+                    <h6>Live Video</h6>
+                </div>
+                <div class="messageSender__option">
+                    <i class="far fa-images" style=" color: green"></i>
+                    <h6>Photo/Video</h6>
+                </div>
+                <div class="messageSender__option">
+                    <i class="far fa-laugh-wink" style="color: yellow;"></i>
+                    <h6>Feeling/Activity</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="messageSender">
+            <div class="messageSender__top">
+        
+                <div class="room">
+                    <i class="fas fa-video fa-gradient"></i>
+                    <input type="text" placeholder=" Create Room" class="messageSender__input" />
+                </div>
+                {% for profile in profiles %}
+                    {% if profile.photo %}
+                    <img src="{{ profile.photo.url }}" alt="" class="profile__avatar">
+                    {% else %}
+                    <img src="/media/default.jpg" alt="" class="profile__avatar">
+                    {% endif %}
+                {% endfor %}
+                
+            </div>
+        </div>
+
+        {% for post in posts %}
+        <div class="post">
+            <div class="post__top">
+                <a href="{{post.get_absolute_url}}">
+                    {% if post.author.profile.photo %}
+                    <img src="{{ post.author.profile.photo.url }}" alt="" class="post__avatar">
+                    {% else %}
+                    <img src="/media/default.jpg" alt="" class="post__avatar">
+                    {% endif %}
+                </a>
+                    <!-- <i class="far fa-user-circle" class="post__avatar"></i> -->
+                <div class="post__topInfo">
+                    <h5> {{post.author}} </h5>
+                    <!-- <p>{{post.created}}</p> -->
+                    <p>{{ post.whenpublished }}</p>
+                </div>
+            </div>
+            <div class="post__bottom">
+                <p> {{post.body}} </p>
+            </div>
+            <div class="post__image">
+                <a href="{{post.get_absolute_url}}">
+                    {% for post in post.images_set.all %}
+                    <img src="{{ post.image.url }}" alt="no image">
+                    {% endfor %}
+                </a>
+            </div>
+            <!-- {% if post.total_likes > 0 %} -->
+            <div class="pst__options">
+                <div class="p__option">
+                    <span class="span"><i class="fas fa-thumbs-up"></i></span>
+                    <p>{{ post.total_likes }}</p>
+                </div>
+                <div class="p__option">
+                    <p class="p">{{ post.comments.count }} Comment{{ post.comments|pluralize }}</p>
+                </div>
+            </div>
+            <!-- {% else %}
+            <div class="pst__options">
+                <div class="p__option"> -->
+                    <!-- <span class="span"><i class="fas fa-thumbs-up"></i></span> -->
+                    <!-- <p></p>
+                </div> -->
+                <!-- <div class="p__option">
+                    <p class="p">1 comment</p>
+                </div>
+            </div> -->
+            <!-- {% endif %} -->
+            <div class="post__options">
+                
+                <div class="post__option">
+                    <i class="far fa-thumbs-up"></i>
+                    <p>Like</p>
+                </div>
+                <div class="post__option">
+                    <i class="far fa-comment-alt"></i>
+                    <p>Comment</p>
+                </div>
+                <div class="post__option">
+                    <i class="fas fa-share"></i>
+                    <p>Share</p>
+                </div>
+                <div class="post__option">
+                    <i class="far fa-user-circle"></i>
+                    <p><i class="fas fa-sort-down"></i></p>
+                </div>
+            </div>
+        
+        </div>
+        {% empty %}
+        <div class="post">
+            <h4> No post found for the Search '{{ request.GET.q }}' </h4>
+        </div>
+        {% endfor %}
+        
+        <div class="post">
+            <div class="post__top">
+                <i class="far fa-user-circle" class="post__avatar"></i>
+                <div class="post__topInfo">
+                    <h5> Jay Filch </h5>
+                    <p>timestring...</p>
+                </div>
+            </div>
+            <div class="post__bottom">
+                <p> Lorem ipsum dolor, sit amet consectetur a
+                    dipisicing elit. Alias, suscipit. </p>
+            </div>
+            <div class="post__image">
+                <img src="{% static 'images/emg.jpg' %}" alt="" />
+            </div>
+            <div class="post__options">
+                <div class="post__option">
+                    <i class="far fa-thumbs-up"></i>
+                    <p>Like</p>
+                </div>
+                <div class="post__option">
+                    <i class="far fa-comment-alt"></i>
+                    <p>Comment</p>
+                </div>
+                <div class="post__option">
+                    <i class="fas fa-share"></i>
+                    <p>Share</p>
+                </div>
+                <div class="post__option">
+                    <i class="far fa-user-circle"></i>
+                    <p><i class="fas fa-sort-down"></i></p>
+                </div>
+            </div>
+        
+        </div>
+        
+        <div class="post">
+        
+            <div class="post__top">
+                <i class="far fa-user-circle" class="post__avatar"></i>
+                <div class="post__topInfo">
+                    <h5> Jay Filch </h5>
+                    <p>timestring...</p>
+                </div>
+            </div>
+            <div class="post__bottom">
+                <p> Lorem ipsum dolor, sit amet consectetur a
+                    dipisicing elit. Alias, suscipit. </p>
+            </div>
+            <div class="post__image">
+                <img src="{% static 'images/Eagle.jpg' %}" alt="" />
+            </div>
+            <div class="post__options">
+                <div class="post__option">
+                    <i class="far fa-thumbs-up"></i>
+                    <p>Like</p>
+                </div>
+                <div class="post__option">
+                    <i class="far fa-comment-alt"></i>
+                    <p>Comment</p>
+                </div>
+                <div class="post__option">
+                    <i class="fas fa-share"></i>
+                    <p>Share</p>
+                </div>
+                <div class="post__option">
+                    <i class="far fa-user-circle"></i>
+                    <p><i class="fas fa-sort-down"></i></p>
+                </div>
+            </div>
+        
+        </div>
+
+    </div>
+    
+</body>
+</html>
